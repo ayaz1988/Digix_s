@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>preroll</title>
+  <link href="style/style.css" rel="stylesheet">
+  <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<div class="container">
+  <header class="clear_fix">
+    <div class="main_center_container clear_fix">
+      <a href="#" class="header_logo"></a>
+      <nav class="header_menu">
+        <ul>
+          <li><a href="#">Ana səhifə</a></li>
+          <li><a href="#">Dünya</a></li>
+          <li><a href="#">Texnologiya</a></li>
+          <li><a href="#">Sosial Media</a></li>
+          <li><a href="#">Dizayn</a></li>
+          <li><a href="#">Marketinq</a></li>
+          <li><a href="#">Kino</a></li>
+        </ul>
+      </nav>
+      <button class="search"></button>
+    </div>
+  </header>
+  <section class="preroll">
+    <div class="preroll_center_container clear_fix">
+      <div class="preroll_right_box">
+        <div class="preroll_banner_video" >
+          <div class="mn">
+            <video width="620" height="349px" controls="">
+              <source src="#" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+            <div class="video_above">
+              <video id="pre-roll" width="100%" height="auto" muted autoplay>
+                <source src="img/digixvv.mp4" type="video/mp4">
+              </video>
+              <div id="skip" class="skip" onclick="closevid();">skip</div>
+            </div>
+        </div>
+        <script>
+          var vid = document.getElementById("pre-roll");
+          vid.onended = function() {
+            this.remove();
+            document.getElementById("skip").remove();
+          };
+          function closevid() {
+            vid.remove();
+            document.getElementById("skip").remove();
+          }
+        </script>
+        <div class="preroll_date_box">
+          <p>Texnologiya</p>
+          <span>10 Dekabr 2020, 00:58</span>
+        </div>
+        <div class="preroll_header">
+          <h2>Çin kosmonavtları ilk dəfə açıq kosmosa çıxdı</h2>
+        </div>
+        <div class="Tags">
+          <h3>Teqlər:</h3>
+          <div class="tag_buttons">
+            <a href="#">çin</a>
+            <a href="#">kosmos</a>
+            <a href="#">insan</a>
+            <a href="#">tarix</a>
+            <a href="#">dünya</a>
+          </div>
+        </div>
+        <h2 id="header">Oxşar videolar</h2>
+        <div class="photo_boxes">
+          <a href="#" class="inner_box">
+            <div class="icon_box">
+              <img src="img/nizamigencevi.png">
+              <i></i>
+            </div>
+            <h3>Nizami yaradıcılığında “Kəlilə və Dimnə” motivləri</h3>
+          </a>
+          <a href="#" class="inner_box">
+            <div class="icon_box">
+              <img src="img/pisik.png">
+              <i></i>
+            </div>
+            <h3>Axil adlı pişik İsveçin Slovakiyaya qalib gələcəyini proqnozlaşdırdı</h3>
+
+          </a>
+        </div>
+        <div class="photo_boxes">
+          <a href="#" class="inner_box">
+            <div class="icon_box">
+              <img src="img/zabit.png">
+              <i></i>
+            </div>
+            <h3>Zabit 2 il sonra rinqə qayıtdı, qalib gəldi</h3>
+          </a>
+          <a href="#" class="inner_box">
+            <div class="icon_box">
+              <img src="img/qarabag.png">
+              <i></i>
+            </div>
+            <h3>"Qarabağ" yeni transferini açıqladı</h3>
+          </a>
+        </div>
+      </div>
+      <div class="preroll_left_box clear_fix">
+        <a href="#" class="left_portret_text clear_fix">
+          <div class="icon_portret_box">
+            <img src="img/ada.png">
+            <i></i>
+          </div>
+          <h4>Xəzərdəki partlayışla bağlı brifinq keçirildi</h4>
+        </a>
+        <a href="#" class="left_portret_text clear_fix">
+          <div class="icon_portret_box">
+            <img src="img/top.png">
+            <i></i>
+          </div>
+          <h4>Azərbaycan-Türkiyə birgə təlimlərində təlim-döyüş tapşırıqları uğurla icra edilir</h4>
+        </a>
+        <a href="#" class="left_portret_text clear_fix">
+          <div class="icon_portret_box">
+            <img src="img/ibrahimovic.png">
+            <i></i>
+          </div>
+          <h4>İbrahimoviç özü barədə filmi təqdim etdi</h4>
+        </a>
+        <a href="#" class="left_portret_text clear_fix">
+          <div class="icon_portret_box">
+            <img src="img/prezidencixis.png">
+            <i></i>
+          </div>
+          <h4>Prezidentin Azərbaycan Ordusunun şəxsi heyəti qarşısında çıxışı</h4>
+        </a>
+        <a href="#" class="left_portret_text clear_fix">
+          <div class="icon_portret_box">
+            <img src="img/toy2.png">
+            <i></i>
+          </div>
+          <h4>Toylar üçün icazə qaydası açıqlandı</h4>
+        </a>
+        <a href="#" class="left_portret_text clear_fix">
+          <div class="icon_portret_box">
+            <img src="img/vaqif_b.png">
+            <i></i>
+          </div>
+          <h4>Vaqif Cavadov: “Karyeramı davam etdirməyə hazıram”</h4>
+        </a>
+      </div>
+    </div>
+
+  </section>
+  <footer class="main_center_container">
+    <h4>© DigiX 2005 - 2020. All images © Flickr.com</h4>
+
+  </footer>
+
+</div>
+</div>
+<script src="js/js.js"></script>
+</body>
+</html>

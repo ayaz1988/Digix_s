@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kub-banner</title>
+    <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <header class="clear_fix">
+            <div class="main_center_container clear_fix">
+                <a href="#" class="header_logo"></a>
+                <nav class="header_menu">
+                    <ul>
+                        <li><a href="#">Ana səhifə</a></li>
+                        <li><a href="#">Dünya</a></li>
+                        <li><a href="#">Texnologiya</a></li>
+                        <li><a href="#">Sosial Media</a></li>
+                        <li><a href="#">Dizayn</a></li>
+                        <li><a href="#">Marketinq</a></li>
+                        <li><a href="#">Kino</a></li>
+                    </ul>
+                </nav>
+                <button class="search"></button>
+            </div>
+        </header>
+        <div class="portret_and_banner main_center_container clear_fix">
+        </div>
+        <section class="display_section">
+            <div class="section_container main_center_container clear_fix">
+                <article class="left_box">
+                    <div class="sidebar">
+<!--                        <script type="text/javascript" src="/banners/nar/js/jquery.js"></script>-->
+                        <script>
+                            $(document).ready(function(){
+
+                                var mY = 0;
+                                var mX = 0;
+                                var dxr = 0;
+
+                                $('.cube-x').on('mouseenter', function(){
+                                    $(this).addClass('n-r');
+                                    $(this).children('.cube-z').removeClass('e-r')
+                                    $('.cube').removeClass('w-t');
+                                    $('.cube').stop(true, true);
+                                    $('.cube').animate({marginRight: "150px", marginTop: "50px"}, 1000);
+                                });
+                                $('.cube-z').on('mouseleave', function(){
+                                    $(this).addClass('e-r');
+                                    $(this).parent('.cube-x').removeClass('n-r');
+                                    $('.cube').addClass('w-t');
+                                    $('.cube').removeClass('t-r');
+                                    $('.cube').animate({marginRight: "0px", marginTop: "0px"}, 1000);
+                                });
+                                $('.close').on('click', function(){
+                                    $(this).parents('.cube-z').addClass('e-r');
+                                    $(this).parents('.cube-x').removeClass('n-r');
+                                    $('.cube').addClass('w-t');
+                                    $('.cube').removeClass('t-r');
+                                    $('.cube').animate({marginRight: "0px", marginTop: "0px"}, 1000);
+                                });
+                                $('.cube').mousemove(function(e){
+                                    $(this).removeClass('t-r');
+                                    // moving upward
+                                    if (e.pageY < mY) {
+                                        if(dxr>36) {
+                                            dxr = 36;
+                                        }
+                                        dxr = dxr + 2;
+                                        // moving downward
+                                    } else if(e.pageY > mY) {
+                                        if(dxr<-22) {
+                                            dxr = -22;
+                                        }
+                                        dxr = dxr -2;
+                                    }
+                                    mY = e.pageY;
+                                    mX = e.pageX;
+                                    $('.cube').css('transform', 'rotateX(' + dxr + 'deg)' + 'rotateY(' + mX + 'deg)');
+                                });
+
+                                $('.prev').on('click', function(){
+                                    var mod = mX % 90;
+                                    mX = mX + 90 - mod;
+                                    $('.cube').addClass('t-r');
+                                    $('.cube').css('transform', 'rotateX(' + 0 + 'deg)' + 'rotateY(' + mX + 'deg)');
+                                });
+
+                                $('.next').on('click', function(){
+                                    var mod = mX % 90;
+                                    if(mod > 0){
+                                        mX = mX - mod;
+                                    } else {
+                                        mX = mX - 90;
+                                    }
+                                    $('.cube').addClass('t-r');
+                                    $('.cube').css('transform', 'rotateX(' + 0 + 'deg)' + 'rotateY(' + mX + 'deg)');
+                                });
+
+                            });
+                        </script>
+                        <style>
+                            .cube-x {width: 240px; height: 400px;position:relative; }
+                            .cube-z {width: 240px; height: 400px; overflow:hidden; right:0; position:absolute; }
+                            .n-r .cube-z{width: 500px; height: 500px; position:absolute;}
+                            .e-r.cube-z{animation-name:vid; animation-duration: 1s; animation-delay: 0s; animation-fill-mode: forwards;}
+                            .wrap {perspective: 800px;perspective-origin: 50% 100px; margin-top: 12px;}
+                            .cube {position: absolute;width: 210px;transform-style: preserve-3d; margin: 0 auto; height:350px; right:0;}
+                            .t-r.cube {transition: transform 1s;}
+                            .cube div {position: absolute; border: 1px solid https://smartbee.az/az/ad-formats000; width: 210px; height: 350px; background-size:cover; background-position: center center; box-sizing:border-box;}
+                            .back {transform: translateZ(-105px) rotateY(180deg);}
+                            .right {transform: rotateY(-270deg) translateX(105px);transform-origin: top right;}
+                            .left {transform: rotateY(270deg) translateX(-105px);transform-origin: center left;}
+                            .top {transform: rotateX(-90deg) translateY(-105px);transform-origin: top center; height: 210px !important;}
+                            .bottom {transform: rotateX(90deg) translateY(105px); top: 140px; transform-origin: bottom center; height: 210px !important;}
+                            .front {transform: translateZ(105px);}
+                            .close {position: absolute; top: 0px; left: 40px; background-size:cover; width: 40px; height: 40px; background-image: url("img/close.svg"); z-index: 999999; cursor: pointer; opacity: 0; transition: opacity .3s ease;}
+                            .n-r .close, .n-r .next, .n-r .prev {opacity:1;}
+                            .prev {position:absolute;bottom: 8px; left:10px; width:50px; height: 50px; background-size:cover; background-image: url("img/prev.svg"); opacity:0; transition: opacity .3s ease; cursor:pointer;}
+                            .next {position:absolute; bottom: 8px; right:10px; width:50px; height: 50px; background-size:cover; background-image: url("img/next.svg"); opacity:0; transition: opacity .3s ease; cursor:pointer;}
+                            @keyframes  spin {
+                                from { transform: rotateY(0); }
+                                to { transform: rotateY(360deg); }
+                            }
+
+                            .cube.w-t {
+                                animation: spin 14s infinite linear;
+                            }
+                            @keyframes  vid {
+                                from { width: 500px;}
+                                to { width: 240px; }
+                            }
+                        </style>
+                        <div class="cube-x">
+                            <div class="cube-z e-r">
+                                <div class="close"></div>
+                                <div class="prev"></div>
+                                <div class="next"></div>
+                                <div class="wrap">
+                                    <div class="cube w-t" style="margin-right: 0px; margin-top: 0px; transform: rotateX(-10deg) rotateY(1224deg);">
+                                        <div class="front" style="background-image:url(img/nar1.jpg)"></div>
+                                        <div class="back" style="background-image:url(img/nar1.jpg)"></div>
+                                        <div class="top" style="background-image:url(img/logo.jpg)"></div>
+                                        <div class="bottom" style="background-image:url(img/logo.jpg)"></div>
+                                        <div class="left" style="background-image:url(img/nar1.jpg)"></div>
+                                        <div class="right" style="background-image:url(img/nar1.jpg)"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>Bəxtsiz şair, qəddar faşist Gebbels</h3></a>
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>Anna Karenina və Tütçevin məhəbbət lirikası</h3></a>
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>Anar Rzayev | Yaşamaq haqqını haqq edən yazıçı</h3></a>
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>Dibçək güllərinin əkilməsi və qulluqu</h3></a>
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>Azərbaycan ədəbiyyatında magik realizm</h3></a>
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>Jukovun diz üstə çök əmri və Beriyanın çöküşü</h3></a>
+                    </div>
+                    <div class="link_text">
+                        <a href="#"><h3>İslamda musiqi, rəsm, heykəltaraşlıq, teatr və kino niyə haramdır?</h3></a>
+                    </div>
+                </article>
+                <div class="right_box">
+                    <div class="large_portrait"></div>
+                    <a href="#" class="right_box_header"><h2>Rafael Abasov | Gerçəkliyin lirik romantik şərhi</h2></a>
+                    <a href="#" class="portret_and_text_smallbox">
+                        <div class="small_portret">
+                            <img src="img/s_portret.png" alt="#">
+                        </div>
+                        <div class="smallbox_header">
+                            <h3>Müsəlman aləminin intibahı niyə tez bitdi, müsəlmanlar niyə belə oldular?</h3>
+                        </div>
+
+                    </a>
+                    <div class="photo_boxes">
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_1.png">
+                            <h3>Azərbaycanın kino sənətinə yeni nəfəs gətirən rejissor</h3>
+                        </a>
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_2.png">
+                            <h3>Müslüm Maqomayev | Qızıl səs əfsanəsi</h3>
+
+                        </a>
+                    </div>
+                    <div class="photo_boxes">
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_3.png">
+                            <h3>Hitlerdən Cobsa – Xarizma və onun elmi əsasları</h3>
+                        </a>
+                        <div class="inner_box">
+                            <img src="img/foto_4.png">
+                            <a href="#">
+                                <h3>Vaxt və pul eyni anda bitməməlidir</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="photo_boxes">
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_5.png">
+                            <h3>F.M. Dostoyevski yaradıcılığında uşaqlıq mövzusu</h3>
+                        </a>
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_6.png">
+                            <h3>İşə gecikdiyi üçün həbsxana da yatan Azərbaycan rəssamı</h3>
+                        </a>
+                    </div>
+                    <div class="photo_boxes">
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_7.png">
+                            <h3>Yəhudiləri başqa millətlərdən fərqləndirən xüsusiyyətlər</h3>
+                        </a>
+                        <a href="#" class="inner_box">
+                            <img src="img/foto_8.png">
+                            <h3>Bədii ədəbiyyatda insan konsepsiyası</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="main_center_container clear_fix">
+            <h4>© DigiX 2005 - 2020. All images © Flickr.com</h4>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
